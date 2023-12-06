@@ -1,0 +1,19 @@
+﻿
+@model RestoranViewModel
+@{
+    Layout = "_Layout1";
+}
+<h5 style="color:red">@ViewBag.Eror</h5>
+
+<h1> Kayıt Ekranı </h1>
+<form asp-controller="Login" asp-action="Register">
+    <label asp-for="Email"></label>
+    <input asp-for="Email" class="form-control" />
+    <label asp-for="UserName"></label>
+    <input asp-for="UserName" class="form-control" />
+    <label asp-for="RestroanName"></label>
+    <input asp-for="RestroanName" class="form-control" />
+    <label asp-for="Password"></label>
+    <input asp-for="Password" class="form-control" />
+   <button type="submit"class="btn btn-success">Kayıt</button>
+</form>

@@ -1,0 +1,10 @@
+﻿@model TableViewModel
+<h1>Masa Ekleme</h1>
+
+<form asp-area="Executive" asp-controller="Table" asp-action="Save">
+    <input type="hidden" asp-for="Id" />
+    <label asp-for="TableNo"></label>
+    <input asp-for="TableNo" class="form-control" />
+    <button type="submit" class="btn btn-success">Ekle</button>
+</form>
+

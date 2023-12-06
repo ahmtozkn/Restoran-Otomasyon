@@ -1,0 +1,306 @@
+﻿
+@* @model List<CategoryViewModel>
+@{
+  
+    var foodList = ViewBag.Food as List<FoodViewModel>;
+    Layout = null;
+    @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Restoran Otomasyon</title>
+        
+    </head>
+    <body>
+        <h1>Restoran Otomasyon</h1>
+        <nav>
+            <ul>
+            <a href=""><li>Home</li></a>
+            <a href=""><li>Order</li></a>
+            <a href=""><li>Near</li></a>
+            <a href=""><li>About</li></a>
+           
+            <a asp-controller="Employee" asp-action="Login"> <li>Çalışan Giriş </li></a>
+            @if (User.IsExecutive())
+            {
+                   <a asp-area="Executive" asp-controller="Home" asp-action="List"> <li>Yönetim Giriş</li></a> 
+            }
+       
+        
+            </ul>
+
+        </nav>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                font-family:sans-serif;
+                box-sizing:border-box;
+
+
+            }
+            h1{
+                text-align:center;
+                color:red
+                padding:20px;
+            }
+            nav{
+                background-color:red;
+                display:grid;
+                place-items:center;
+            }
+            nav ul{
+
+                list-style-type:none;
+            }
+            nav ul a{
+
+                display:inline-block;
+                padding:20px;
+                text-decoration:none;
+                color:black;
+                transition:0.2s ease-in;
+                font-size:18px
+            }
+            nav ul a:hover{
+
+                background-color:black;
+                color:wheat;
+
+            }
+
+            .items{
+
+                display:grid;
+                grid-template-columns:repeat(3,1fr);
+                padding: 30px 20px;
+                grid-column-gap:20px;
+                grid-row-gap:30px;
+            }
+            .item img{
+                width:100%;
+                height:300px;
+                object-fit:cover;
+                cursor:pointer;
+                transition:0.2s ease;
+            }
+            .item  img:hover{
+                transform:scale(1.04);
+
+            }
+            .item h4{
+                padding:5px;
+                text-align:center;
+
+            }
+            .item button{
+                padding:5px 30px;
+                border:none;
+                outline:none;
+                background-color:red;
+                color:wheat;
+                cursor:pointer;
+                border-radius:4px;
+                font-size:20px;
+                display:block;
+                margin: 0 auto;
+                transition: 0.2s all;
+            }
+            .item button:hover{
+                transform:scale(1.08);
+
+            }
+            
+        </style>
+
+<div class="container text-center mt-5">
+    @foreach (var item in Model)
+    {
+        <h1>@item.Name</h1>
+        <hr />
+        <div class="row">
+            <section class="items">  
+            @foreach (var i in foodList.Where(f => f.CategoryId == item.Id))
+            {
+                <div class="item">
+                    <img  src="~/images/Food/@i.ImagePath">
+                    <h4>@i.Name</h4>
+                    <button>Order</button>
+                </div>
+
+
+ 
+            }
+       </section>
+        </div>
+    }
+</div> 
+
+
+    </body>
+
+</html> *@
+@model List<CategoryViewModel>
+@{
+    var foodList = ViewBag.Food as List<FoodViewModel>;
+    Layout = null;
+    @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restoran Otomasyon</title>
+</head>
+<body>
+       <style>
+            *{
+                margin:0;
+                padding:0;
+                font-family:sans-serif;
+                box-sizing:border-box;
+
+
+            }
+            h1{
+                text-align:center;
+                color:red
+                padding:20px;
+            }
+            nav{
+                background-color:red;
+                display:grid;
+                place-items:center;
+            }
+            nav ul{
+
+                list-style-type:none;
+            }
+            nav ul a{
+
+                display:inline-block;
+                padding:20px;
+                text-decoration:none;
+                color:black;
+                transition:0.2s ease-in;
+                font-size:18px
+            }
+            nav ul a:hover{
+
+                background-color:black;
+                color:wheat;
+
+            }
+
+            .items{
+
+                display:grid;
+                grid-template-columns:repeat(3,1fr);
+                padding: 30px 20px;
+                grid-column-gap:20px;
+                grid-row-gap:30px;
+            }
+            .item img{
+                width:100%;
+                height:300px;
+                object-fit:cover;
+                cursor:pointer;
+                transition:0.2s ease;
+            }
+            .item  img:hover{
+                transform:scale(1.04);
+
+            }
+            .item h4{
+                padding:5px;
+                text-align:center;
+
+            }
+            .item button{
+                padding:5px 30px;
+                border:none;
+                outline:none;
+                background-color:red;
+                color:wheat;
+                cursor:pointer;
+                border-radius:4px;
+                font-size:20px;
+                display:block;
+                margin: 0 auto;
+                transition: 0.2s all;
+            }
+            .item button:hover{
+                transform:scale(1.08);
+
+            }
+            
+        </style>
+    <h1>Restoran Otomasyon</h1>
+    <nav>
+        <ul>
+            <a href=""><li>Home</li></a>
+            <a href=""><li>Order</li></a>
+            <a href=""><li>Near</li></a>
+            <a href=""><li>About</li></a>
+            <a asp-controller="Employee" asp-action="Login"><li>Çalışan Giriş</li></a>
+            @if (User.IsExecutive())
+            {
+                <a asp-area="Executive" asp-controller="Home" asp-action="List"><li>Yönetim Giriş</li></a>
+            }
+        </ul>
+    </nav>
+
+    <div class="container text-center mt-5">
+        @foreach (var item in Model)
+        {
+            <h1>@item.Name</h1>
+            <hr />
+            <div class="row">
+                <section class="items">
+                    @foreach (var i in foodList.Where(f => f.CategoryId == item.Id))
+                    {
+                        <div class="item">
+                            <img src="~/images/Food/@i.ImagePath">
+                            <h4>@i.Name</h4>
+                            <button onclick="openOrderModal('@i.Name')">Order</button>
+                        </div>
+                    }
+                </section>
+            </div>
+        }
+    </div>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderModal()">&times;</span>
+            <h2>Order Details</h2>
+            <label for="tableNumber">Masa Numarası:</label>
+            <input type="text" id="tableNumber" name="tableNumber">
+            <button onclick="submitOrder()">Submit Order</button>
+        </div>
+    </div>
+
+    <script>
+        // Order Modal Functions
+        function openOrderModal(foodName) {
+            document.getElementById("orderModal").style.display = "block";
+            // Additional logic for passing foodName or other data if needed
+        }
+
+        function closeOrderModal() {
+            document.getElementById("orderModal").style.display = "none";
+        }
+
+        function submitOrder() {
+            var tableNumber = document.getElementById("tableNumber").value;
+            // Additional logic for submitting the order with tableNumber
+            closeOrderModal();
+        }
+    </script>
+
+</body>
+</html>

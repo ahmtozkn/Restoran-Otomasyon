@@ -1,0 +1,30 @@
+﻿@model EmployeeViewModel
+
+
+
+<div class="card-header fw-bold fs-5">
+    @(Model.Id == 0 ? "Eleman Ekleme Formu" : "Eleman Güncelleme Formu")
+</div>
+<h5 style="color:red">@ViewBag.ErorEmployee</h5>
+
+<form asp-area="Executive" asp-controller="Employee" asp-action="Save">
+    <input type="hidden" asp-for="Id" />
+    <label asp-for="Email"></label>
+    <input asp-for="Email" class="form-control" />
+
+    <label asp-for="FirstName"></label>
+    <input  asp-for="FirstName" class="form-control"/>
+    
+    <label asp-for="LastName"></label>
+    <input asp-for="LastName" class="form-control" />
+
+    <label asp-for="Password"></label>
+    <input asp-for="Password" class="form-control" />
+
+    <label asp-for="EmployeeStatus"></label>
+    <select asp-for ="EmployeeStatus" asp-items="@ViewBag.EmployeeStatus" class="form-control"> </select>
+     
+
+    <button type="submit" class="btn btn-success">@(Model.Id == 0 ? "Kaydet" : "Güncelle")</button>
+
+</form>

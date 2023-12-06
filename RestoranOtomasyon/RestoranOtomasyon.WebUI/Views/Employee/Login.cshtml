@@ -1,0 +1,15 @@
+﻿@model EmployeeLoginViewModel
+
+<h5 style="color:red"> @ViewBag.EmployeeEror  </h5>
+
+<h1>Çalışan Giriş</h1>
+
+
+<form asp-controller="Employee" asp-action="Login">
+
+    <label asp-for="Email"></label>
+    <input asp-for="Email" class="form-control" />
+    <label asp-for="Password"></label>
+    <input asp-for="Password" class="form-control" />
+    <button class="btn btn-success" type="submit">Giriş</button>
+</form>

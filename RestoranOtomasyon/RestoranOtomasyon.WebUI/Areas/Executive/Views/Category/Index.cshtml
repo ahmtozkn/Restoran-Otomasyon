@@ -1,0 +1,28 @@
+﻿@model List<CategoryViewModel>
+
+<h1>CATEGORY LİSTESİ</h1>
+
+<a class="btn btn-primary" asp-area="Executive" asp-controller="Category" asp-action="Add">Yeni Ürün Ekle </a>
+
+<table class="table table-stripped">
+    <tr>
+        <th>CategoryName</th>
+        <th>CategoryDescription</th>
+        <th></th>
+
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryName</td>
+            <td>@item.CategoryDescription</td>
+            <td> 
+                <a class="btn btn-success" asp-area="Executive" asp-controller="Category" asp-action="Update" asp-route-id="@item.Id">Güncelle</a>
+                <a class="btn btn-danger" asp-area="Executive" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+            </td>
+        </tr>
+    }
+
+
+
+</table>

@@ -1,0 +1,49 @@
+﻿@model List<ListFoodViewModel>
+
+    <h1>ÜRÜNLER LİSTESİ</h1>
+    <a class="btn btn-primary" asp-area="Executive" asp-controller="Food" asp-action="Add">Yeni Ürün Ekle</a>
+
+    <table class="table table-stripped">
+        <tr>
+           <th></th>
+           <th>Name</th>
+           <th>CategoryName </th>
+           <th>UnitPrice</th>
+           <th></th>
+           <th></th>
+        </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="~/images/Food/@item.ImagePath" data-lightbox="x" data-title="y">
+
+                    <img src="~/images/Food/@item.ImagePath" width="155" height="155" />
+
+
+                </a>
+
+            </td>
+            <td>@item.Name</td>
+            <td>@item.CategoryName</td>
+            <td>@item.UnitPrice</td>
+            @if (item.Available == AvailableEnum.Mevcut)
+            {
+                <td style="color:green">Aktif</td>
+            }
+            else{
+                <td style="color:red">Tükendi</td>
+            }
+            <td>
+                <a asp-area="Executive" asp-controller="Food" asp-action="Update" asp-route-id="@item.Id" class="btn btn-success">Güncelle</a>
+                <a asp-area="Executive" asp-controller="Food" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Sil</a>
+            </td>
+
+
+        </tr>
+        
+    }
+
+
+
+    </table>

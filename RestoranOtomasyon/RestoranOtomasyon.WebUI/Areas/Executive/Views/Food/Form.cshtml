@@ -1,0 +1,34 @@
+﻿@model FoodViewModel
+
+<form method="post" asp-area="Executive" asp-controller="Food" asp-action="Save" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <label asp-for="Name"></label>
+    <input asp-for="Name" class="form-control" />
+    <label asp-for="Description"></label>
+    <input asp-for="Description" class="form-control" />
+    <label asp-for="UnitPrice"></label>
+    <input asp-for="UnitPrice" class="form-control" />
+    <label >CategoryName </label>
+    <select asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.CategoryList, "Id" , "CategoryName"))" class="form-control">
+        <option selected disabled>Seçiniz</option>
+    </select>
+    <div class="mb-2">
+        <label asp-for="ImagePath"></label> <br />
+
+        @if (!string.IsNullOrWhiteSpace(ViewBag.ImagePath))
+        {
+            <img class="mb-2 mt-2" width="125" height="125" src="~/images/Food/@ViewBag.ImagePath" />
+        }
+
+        <input type="file" asp-for="ImagePath" class="form-control" />
+    </div>
+
+    @if (!string.IsNullOrWhiteSpace(ViewBag.FileError))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.FileError
+        </div>
+    }
+
+    <button type="submit" class="btn btn-success mt-3 float-end">Ürün Kayıt</button>
+</form>

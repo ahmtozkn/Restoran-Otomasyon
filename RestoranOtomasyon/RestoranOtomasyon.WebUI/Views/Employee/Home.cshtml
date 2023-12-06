@@ -1,0 +1,25 @@
+﻿@model List<TableViewModel>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mt-3">
+                @if (item.Activated == ActivatedEnum.Active)
+                {
+                    <div style="height:300px; background-color:green; border-radius: 10px; padding: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <h2 class="card-header">@item.TableNo</h2>
+                        <!-- Diğer detayları veya eylemleri ekleyin, gerekirse -->
+                    </div>
+                }
+                else
+                {
+                    <div style="height:300px; background-color:red; border-radius: 10px; padding: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <h2 class="card-header">@item.TableNo</h2>
+                        <!-- Diğer detayları veya eylemleri ekleyin, gerekirse -->
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    </div>

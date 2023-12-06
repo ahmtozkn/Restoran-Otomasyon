@@ -1,0 +1,34 @@
+﻿@model List<EmployeeViewModel>
+
+
+<h1>Çalışanlar Listesi</h1>
+
+<a asp-area="Executive" asp-controller="Employee" asp-action="Add" class="btn btn-primary">Eleman Ekle</a>
+
+<table class="table table-stripped">
+    <tr>
+        <th>Email</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>EmployeeStatus</th>
+        <th> </th>
+
+
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Email</td>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.EmployeeStatus</td>
+            <td>
+                <a class="btn btn-primary" asp-area="Executive" asp-controller="Employee" asp-action="Update" asp-route-id="@item.Id">Güncelle</a>
+                <a class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+    }
+
+
+</table>

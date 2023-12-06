@@ -1,0 +1,12 @@
+﻿@model RestoranLoginViewModel
+@{
+    Layout = "_Layout1";
+}
+<h1>Restoran Giriş</h1>
+<form asp-controller="Login" asp-action="Login">
+    <label asp-for="UserName"></label>
+    <input asp-for="UserName" class="form-control" />
+    <label asp-for="Password"></label>
+    <input type="password" class="form-control"asp-for="Password"/>
+    <button type="submit" class="btn btn-success">Giriş</button>
+</form>
